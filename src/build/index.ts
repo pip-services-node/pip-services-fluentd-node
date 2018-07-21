@@ -1,0 +1,1 @@
+export { DefaultFluentdFactory } from './DefaultFluentdFactory';

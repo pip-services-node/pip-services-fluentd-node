@@ -21,11 +21,11 @@ class FluentdLogger extends pip_services_components_node_1.CachedLogger {
         super.setReferences(references);
         this._connectionResolver.setReferences(references);
     }
-    isOpened() {
+    isOpen() {
         return this._timer != null;
     }
     open(correlationId, callback) {
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             callback(null);
             return;
         }
@@ -63,7 +63,7 @@ class FluentdLogger extends pip_services_components_node_1.CachedLogger {
         });
     }
     save(messages, callback) {
-        if (!this.isOpened() || messages.length == 0) {
+        if (!this.isOpen() || messages.length == 0) {
             if (callback)
                 callback(null);
             return;

@@ -1,6 +1,6 @@
 {
     "name": "pip-services-fluentd",
     "registry": "pipdevs",
-    "version": "3.0.0",
+    "version": "3.0.2",
     "build": "0"
 }

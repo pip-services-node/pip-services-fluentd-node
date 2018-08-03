@@ -13,7 +13,7 @@ export declare class FluentdLogger extends CachedLogger implements IReferenceabl
     constructor();
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
     protected save(messages: LogMessage[], callback: (err: any) => void): void;

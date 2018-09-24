@@ -3,7 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const FluentdLogger_1 = require("../log/FluentdLogger");
+/**
+ * Creates Fluentd components by their descriptors.
+ *
+ * @see [[FluentdLogger]]
+ */
 class DefaultFluentdFactory extends pip_services_components_node_1.Factory {
+    /**
+     * Create a new instance of the factory.
+     */
     constructor() {
         super();
         this.registerAsType(DefaultFluentdFactory.FluentdLoggerDescriptor, FluentdLogger_1.FluentdLogger);

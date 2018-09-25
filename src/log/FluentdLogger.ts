@@ -18,41 +18,41 @@ import { HttpConnectionResolver } from 'pip-services-rpc-node';
  * 
  * ### Configuration parameters ###
  * 
- * level:             maximum log level to capture
- * source:            source (context) name
- * connection(s):           
- *   discovery_key:         (optional) a key to retrieve the connection from [[IDiscovery]]
- *   protocol:              connection protocol: http or https
- *   host:                  host name or IP address
- *   port:                  port number
- *   uri:                   resource URI or connection string with all parameters in it
- * options:
- *   interval:        interval in milliseconds to save log messages (default: 10 seconds)
- *   max_cache_size:  maximum number of messages stored in this cache (default: 100)        
- *   reconnect:       reconnect timeout in milliseconds (default: 60 sec)
- *   timeout:         invocation timeout in milliseconds (default: 30 sec)
+ * - level:             maximum log level to capture
+ * - source:            source (context) name
+ * - connection(s):           
+ *     - discovery_key:         (optional) a key to retrieve the connection from [[IDiscovery]]
+ *     - protocol:              connection protocol: http or https
+ *     - host:                  host name or IP address
+ *     - port:                  port number
+ *     - uri:                   resource URI or connection string with all parameters in it
+ * - options:
+ *     - interval:        interval in milliseconds to save log messages (default: 10 seconds)
+ *     - max_cache_size:  maximum number of messages stored in this cache (default: 100)        
+ *     - reconnect:       reconnect timeout in milliseconds (default: 60 sec)
+ *     - timeout:         invocation timeout in milliseconds (default: 30 sec)
  * 
  * ### References ###
  * 
- * - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
- * - *:discovery:*:*:1.0        (optional) IDiscovery services to resolve connection
+ * - <code>\*:context-info:\*:\*:1.0</code>   (optional) [[ContextInfo]] to detect the context id 
+ *                                              and specify counters source
+ * - <code>\*:discovery:\*:\*:1.0</code>      (optional) IDiscovery services to resolve connection
  * 
  * ### Example ###
  * 
- * let logger = new FluentdLogger();
- * logger.configure(ConfigParams.fromTuples(
- *     "connection.protocol", "http",
- *     "connection.host", "localhost",
- *     "connection.port", 24224
- * ));
- * 
- * logger.open("123", (err) => {
- *     ...
- * });
- * 
- * logger.error("123", ex, "Error occured: %s", ex.message);
- * logger.debug("123", "Everything is OK.");
- * 
+ *     let logger = new FluentdLogger();
+ *     logger.configure(ConfigParams.fromTuples(
+ *         "connection.protocol", "http",
+ *         "connection.host", "localhost",
+ *         "connection.port", 24224
+ *     ));
+ *     
+ *     logger.open("123", (err) => {
+ *         ...
+ *     });
+ *     
+ *     logger.error("123", ex, "Error occured: %s", ex.message);
+ *     logger.debug("123", "Everything is OK.");
  */
 export class FluentdLogger extends CachedLogger implements IReferenceable, IOpenable {
     private _connectionResolver: HttpConnectionResolver = new HttpConnectionResolver();

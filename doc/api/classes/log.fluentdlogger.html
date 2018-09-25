@@ -76,36 +76,46 @@
 					together with Kubernetes container orchestrator.</p>
 					<p>Authentication is not supported in this version.</p>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>level:             maximum log level to capture
-						source:            source (context) name
-						connection(s):
-						discovery_key:         (optional) a key to retrieve the connection from [[IDiscovery]]
-						protocol:              connection protocol: http or https
-						host:                  host name or IP address
-						port:                  port number
-						uri:                   resource URI or connection string with all parameters in it
-						options:
-						interval:        interval in milliseconds to save log messages (default: 10 seconds)
-						max_cache_size:  maximum number of messages stored in this cache (default: 100)
-						reconnect:       reconnect timeout in milliseconds (default: 60 sec)
-					timeout:         invocation timeout in milliseconds (default: 30 sec)</p>
+					<ul>
+						<li>level:             maximum log level to capture</li>
+						<li>source:            source (context) name</li>
+						<li>connection(s):<ul>
+								<li>discovery_key:         (optional) a key to retrieve the connection from [[IDiscovery]]</li>
+								<li>protocol:              connection protocol: http or https</li>
+								<li>host:                  host name or IP address</li>
+								<li>port:                  port number</li>
+								<li>uri:                   resource URI or connection string with all parameters in it</li>
+							</ul>
+						</li>
+						<li>options:<ul>
+								<li>interval:        interval in milliseconds to save log messages (default: 10 seconds)</li>
+								<li>max_cache_size:  maximum number of messages stored in this cache (default: 100)</li>
+								<li>reconnect:       reconnect timeout in milliseconds (default: 60 sec)</li>
+								<li>timeout:         invocation timeout in milliseconds (default: 30 sec)</li>
+							</ul>
+						</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><em>:context-info:</em>:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
-						<li><em>:discovery:</em>:*:1.0        (optional) IDiscovery services to resolve connection</li>
+						<li><code>*:context-info:*:*:1.0</code>   (optional) [[ContextInfo]] to detect the context id<pre><code>                                       <span class="hljs-keyword">and</span> <span class="hljs-keyword">specify</span> counters source
+</code></pre></li>
+						<li><code>*:discovery:*:*:1.0</code>      (optional) IDiscovery services to resolve connection</li>
 					</ul>
 					<h3 id="example">Example</h3>
-					<p>let logger = new FluentdLogger();
-						logger.configure(ConfigParams.fromTuples(
-						&quot;connection.protocol&quot;, &quot;http&quot;,
-						&quot;connection.host&quot;, &quot;localhost&quot;,
-						&quot;connection.port&quot;, 24224
-					));</p>
-					<p>logger.open(&quot;123&quot;, (err) =&gt; {
-						...
-					});</p>
-					<p>logger.error(&quot;123&quot;, ex, &quot;Error occured: %s&quot;, ex.message);
-					logger.debug(&quot;123&quot;, &quot;Everything is OK.&quot;);</p>
+					<pre><code><span class="hljs-keyword">let</span> logger = <span class="hljs-keyword">new</span> FluentdLogger();
+logger.configure(ConfigParams.fromTuples(
+    <span class="hljs-string">"connection.protocol"</span>, <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"connection.host"</span>, <span class="hljs-string">"localhost"</span>,
+    <span class="hljs-string">"connection.port"</span>, <span class="hljs-number">24224</span>
+));
+
+logger.<span class="hljs-keyword">open</span>(<span class="hljs-string">"123"</span>, (err) =&gt; {
+    ...
+});
+
+logger.<span class="hljs-built_in">error</span>(<span class="hljs-string">"123"</span>, ex, <span class="hljs-string">"Error occured: %s"</span>, ex.message);
+logger.<span class="hljs-keyword">debug</span>(<span class="hljs-string">"123"</span>, <span class="hljs-string">"Everything is OK."</span>);
+</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -197,7 +207,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CachedLogger.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L64">log/FluentdLogger.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L64">log/FluentdLogger.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,7 +335,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L152">log/FluentdLogger.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L152">log/FluentdLogger.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -415,7 +425,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CachedLogger.configure</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L78">log/FluentdLogger.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L78">log/FluentdLogger.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -817,7 +827,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L102">log/FluentdLogger.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L102">log/FluentdLogger.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -902,7 +912,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L112">log/FluentdLogger.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L112">log/FluentdLogger.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -958,7 +968,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CachedLogger.save</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L171">log/FluentdLogger.ts:171</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L171">log/FluentdLogger.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1051,7 +1061,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Logger.setReferences</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/f8fa2ce/src/log/FluentdLogger.ts#L92">log/FluentdLogger.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-fluentd-node/blob/dfb4e96/src/log/FluentdLogger.ts#L92">log/FluentdLogger.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
